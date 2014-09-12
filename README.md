@@ -11,7 +11,7 @@
 ### Composer
 RawSession is available via [Composer/Packagist](https://packagist.org/packages/rawphp/raw-session).
 
-Add `""rawphp/raw-session": "dev-master"` to the require block in your composer.json and then run `composer install`.
+Add `"rawphp/raw-session": "dev-master"` to the require block in your composer.json and then run `composer install`.
 
 ```json
 {
