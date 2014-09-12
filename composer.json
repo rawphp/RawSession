@@ -1,0 +1,27 @@
+{
+    "name": "rawphp/raw-session",
+    "type": "library",
+    "description": "RawSession provides application session service, including flash messages and is used by RawPHP framework and other applications.",
+    "keywords": [ "session" ],
+    "homepage": "http://rawphp.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Kaczocha",
+            "email": "tom@rawphp.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "phpunit/phpunit": "4.2.5"
+    },
+    "require-dev": {
+        "rawphp/raw-base": "dev-master",
+        "squizlabs/php_codesniffer": "1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "lib/"
+        ]
+    }
+}
