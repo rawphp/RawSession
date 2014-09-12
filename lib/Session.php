@@ -79,6 +79,8 @@ class Session extends Component implements ISession
      * will update the session and calls session_start();
      * 
      * @param array $config configuration array
+     * 
+     * @action ON_SESSION_INIT_ACTION
      */
     public function init( $config )
     {
@@ -115,16 +117,22 @@ class Session extends Component implements ISession
             
             $this->_sessionID = session_id();
         }
+        
+        $this->doAction( self::ON_SESSION_INIT_ACTION );
     }
     
     /**
      * Starts a new Session.
+     * 
+     * @action ON_SESSION_START_ACTION
      */
-    public function start()
+    public function start( )
     {
         session_start( );
         
         $this->_sessionID = session_id( );
+        
+        $this->doAction( self::ON_SESSION_START_ACTION );
     }
     
     /**
@@ -135,10 +143,15 @@ class Session extends Component implements ISession
      * If strict is used, then an exception will be thrown
      * if there is no session to close.
      * 
+     * @action ON_BEFORE_SESSION_CLOSE_ACTION
+     * @action ON_AFTER_SESSION_CLOSE_ACTION
+     * 
      * @throws InvalidSessionException if there is no session to close
      */
-    public function close()
+    public function close( )
     {
+        $this->doAction( self::ON_BEFORE_SESSION_CLOSE_ACTION );
+        
         if ( NULL !== $this->_sessionID )
         {
             session_write_close( );
@@ -147,6 +160,8 @@ class Session extends Component implements ISession
         {
             throw new InvalidSessionException( 'There is no session to close' );
         }
+        
+        $this->doAction( self::ON_AFTER_SESSION_CLOSE_ACTION );
     }
     
     /**
@@ -157,10 +172,15 @@ class Session extends Component implements ISession
      * If strict is used, then an exception will be thrown
      * if there is no session to close.
      * 
+     * @action ON_BEFORE_SESSION_DESTROY_ACTION
+     * @action ON_AFTER_SESSION_DESTROY_ACTION
+     * 
      * @throws InvalidSessionException if there is no session to close
      */
-    public function destroy()
+    public function destroy( )
     {
+        $this->doAction( self::ON_BEFORE_SESSION_DESTROY_ACTION );
+        
         if ( NULL !== $this->_sessionID )
         {
             session_destroy();
@@ -169,37 +189,47 @@ class Session extends Component implements ISession
         {
             throw new InvalidSessionException( 'There is no session to destroy' );
         }
+        
+        $this->doAction( self::ON_AFTER_SESSION_DESTROY_ACTION );
     }
     
     /**
      * Destroys and starts a new session.
+     * 
+     * @action ON_SESSION_RECREATE_ACTION
      */
-    public function recreate()
+    public function recreate( )
     {
         $this->destroy();
         $this->start();
+        
+        $this->doAction( self::ON_SESSION_RECREATE_ACTION );
     }
     
     /**
      * Returns the session ID.
      * 
+     * @filter ON_GET_SESSION_ID_FILTER
+     * 
      * @return string session ID
      */
-    public function getID()
+    public function getID( )
     {
-        return $this->_sessionID;
+        return $this->filter( self::ON_GET_SESSION_ID_FILTER, $this->_sessionID );
     }
     
     /**
      * Returns the session status.
      * 
+     * @fitler ON_GET_SESSION_STATUS_FILTER
+     * 
      * @return string session status
      */
-    public function getStatus()
+    public function getStatus( )
     {
         $retval = NULL;
         
-        switch ( session_status() )
+        switch ( session_status( ) )
         {
             case 0:
                 $retval = self::STATUS_DISABLED;
@@ -218,13 +248,15 @@ class Session extends Component implements ISession
                 break;
         }
         
-        return $retval;
+        return $this->filter( self::ON_GET_SESSION_STATUS_FILTER, $retval );
     }
     
     /**
      * Retrieves a value from the session.
      * 
      * @param string $key the key
+     * 
+     * @filter ON_GET_SESSION_VALUE_FILTER
      * 
      * @return mixed the value for the key or NULL
      */
@@ -237,7 +269,7 @@ class Session extends Component implements ISession
             $retval = $_SESSION[ $key ];
         }
         
-        return $retval;
+        return $this->filters( self::ON_GET_SESSION_VALUE_FILTER, $retval, $key );
     }
     
     /**
@@ -245,19 +277,28 @@ class Session extends Component implements ISession
      * 
      * @param string $key   the key
      * @param mixed  $value the value
+     * 
+     * @filter ON_ADD_SESSION_VALUE_FILTER
+     * @action ON_AFTER_ADD_SESSION_VALUE_ACTION
      */
     public function add( $key, $value )
     {
-        $_SESSION[ $key ] = $value;
+        $_SESSION[ $key ] = $this->filter( self::ON_ADD_SESSION_VALUE_FILTER, $value, $key );
+        
+        $this->doAction( self::ON_AFTER_ADD_SESSION_VALUE_ACTION );
     }
     
     /**
      * Removes a value from the session.
      * 
      * @param string $key key for the value
+     * 
+     * @filter ON_REMOVE_SESSION_VALUE_FILTER
      */
     public function remove( $key )
     {
+        $key = $this->filter( self::ON_REMOVE_SESSION_VALUE_FILTER, $key );
+        
         unset( $_SESSION[ $key ] );
     }
     
@@ -265,4 +306,20 @@ class Session extends Component implements ISession
     const STATUS_DISABLED = 'Distabled';
     const STATUS_NONE     = 'None';
     const STATUS_ACTIVE   = 'Active';
+    
+    // hooks
+    const ON_SESSION_INIT_ACTION            = 'on_session_init_action';
+    const ON_SESSION_START_ACTION           = 'on_session_start_action';
+    const ON_BEFORE_SESSION_CLOSE_ACTION    = 'on_before_session_close_action';
+    const ON_AFTER_SESSION_CLOSE_ACTION     = 'on_session_close_action';
+    const ON_BEFORE_SESSION_DESTROY_ACTION  = 'on_before_session_destroy_action';
+    const ON_AFTER_SESSION_DESTROY_ACTION   = 'on_after_session_destroy_action';
+    const ON_SESSION_RECREATE_ACTION        = 'on_session_recreate_action';
+    const ON_AFTER_ADD_SESSION_VALUE_ACTION = 'on_after_add_session_value_action';
+    
+    const ON_GET_SESSION_ID_FILTER          = 'on_get_session_id_filter';
+    const ON_GET_SESSION_STATUS_FILTER      = 'on_get_session_status_filter';
+    const ON_GET_SESSION_VALUE_FILTER       = 'on_get_session_value_filter';
+    const ON_ADD_SESSION_VALUE_FILTER       = 'on_add_session_value_filter';
+    const ON_REMOVE_SESSION_VALUE_FILTER    = 'on_remove_session_value_filter';
 }
