@@ -15,7 +15,7 @@ Add `""rawphp/raw-session": "dev-master"` to the require-dev block in your compo
 
 ```json
 {
-        "require-dev": {
+        "require": {
             "rawphp/raw-session": "dev-master"
         }
 }
