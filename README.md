@@ -83,8 +83,8 @@ Please submit bug reports, suggestions and pull requests to the [GitHub issue tr
 
 ## Changelog
 
-#### 11-09-2014
-- Initial Code Commit
-
 #### 13-09-2014
 - Added the hook system
+
+#### 11-09-2014
+- Initial Code Commit
