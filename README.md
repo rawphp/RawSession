@@ -44,7 +44,10 @@ $config = array(
 );
 
 // create a new session instance
-$session = new Session( $config );
+$session = new Session( );
+
+// initialise
+$session->init( $config );
 
 // start session
 $session->start( );
@@ -82,3 +85,6 @@ Please submit bug reports, suggestions and pull requests to the [GitHub issue tr
 
 #### 11-09-2014
 - Initial Code Commit
+
+#### 13-09-2014
+- Added the hook system

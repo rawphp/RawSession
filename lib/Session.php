@@ -56,23 +56,6 @@ class Session extends Component implements ISession
     private $_strict        = FALSE;
     
     /**
-     * Session constructor.
-     * 
-     * @param array $config configuration array
-     */
-    public function __construct( $config = array( ) )
-    {
-        parent::__construct( $config );
-        
-        $this->init( $config );
-        
-        if ( isset( $config[ 'auto_start' ] ) && $config[ 'auto_start' ] )
-        {
-            $this->start( );
-        }
-    }
-    
-    /**
      * Initialises the session.
      * 
      * If config array is specified this function
@@ -116,6 +99,11 @@ class Session extends Component implements ISession
             $this->start();
             
             $this->_sessionID = session_id();
+        }
+        
+        if ( isset( $config[ 'auto_start' ] ) && $config[ 'auto_start' ] )
+        {
+            $this->start( );
         }
         
         $this->doAction( self::ON_SESSION_INIT_ACTION );

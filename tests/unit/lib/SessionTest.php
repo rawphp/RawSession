@@ -91,7 +91,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->session = new Session( self::$config );
+        $this->session = new Session( );
+        $this->session->init( self::$config );
     }
     
     /**
