@@ -257,7 +257,7 @@ class Session extends Component implements ISession
             $retval = $_SESSION[ $key ];
         }
         
-        return $this->filters( self::ON_GET_SESSION_VALUE_FILTER, $retval, $key );
+        return $this->filter( self::ON_GET_SESSION_VALUE_FILTER, $retval, $key );
     }
     
     /**

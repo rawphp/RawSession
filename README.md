@@ -83,6 +83,9 @@ Please submit bug reports, suggestions and pull requests to the [GitHub issue tr
 
 ## Changelog
 
+#### 14-09-2014
+- Fixed bug in Session.php.
+
 #### 13-09-2014
 - Added the hook system
 
