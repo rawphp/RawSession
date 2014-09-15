@@ -1,7 +1,6 @@
-
 # RawSession - A Simple Session Wrapper Class for PHP Applications
 
-## Class Features
+## Package Features
 
 - Easily manage sessions with `start()`, `close()`, `destroy()` and `recreate()`
 - Manage data persistence across requests with `add()`, `get()`, `remove()`
@@ -11,12 +10,12 @@
 ### Composer
 RawSession is available via [Composer/Packagist](https://packagist.org/packages/rawphp/raw-session).
 
-Add `"rawphp/raw-session": "0.1.1"` to the require block in your composer.json and then run `composer install`.
+Add `"rawphp/raw-session": "0.*@dev"` to the require block in your composer.json and then run `composer install`.
 
 ```json
 {
         "require": {
-            "rawphp/raw-session": "0.1.1"
+            "rawphp/raw-session": "0.*@dev"
         }
 }
 ```
@@ -24,7 +23,7 @@ Add `"rawphp/raw-session": "0.1.1"` to the require block in your composer.json a
 You can also simply run the following from the command line:
 
 ```sh
-composer require rawphp/raw-session "0.1.1"
+composer require rawphp/raw-session "0.*@dev"
 ```
 
 ### Tarball
