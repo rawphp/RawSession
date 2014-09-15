@@ -1,5 +1,7 @@
 # RawSession - A Simple Session Wrapper Class for PHP Applications
 
+[![Build Status](https://travis-ci.org/rawphp/RawSession.svg?branch=master)](https://travis-ci.org/rawphp/RawSession)
+
 ## Package Features
 
 - Easily manage sessions with `start()`, `close()`, `destroy()` and `recreate()`
