@@ -65,8 +65,10 @@ class Session extends Component implements ISession
      * 
      * @action ON_SESSION_INIT_ACTION
      */
-    public function init( $config )
+    public function init( $config = NULL )
     {
+        parent::init( $config );
+        
         if ( is_array( $config ) )
         {
             foreach ( $config as $key => $value )

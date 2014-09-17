@@ -1,9 +1,8 @@
-# RawSession - A Simple Session Wrapper Class for PHP Applications
+# RawSession - A Simple Session Wrapper Class for PHP Applications [![Build Status](https://travis-ci.org/rawphp/RawSession.svg?branch=master)](https://travis-ci.org/rawphp/RawSession)
 
-[![Build Status](https://travis-ci.org/rawphp/RawSession.svg?branch=master)](https://travis-ci.org/rawphp/RawSession)
+[![Latest Stable Version](https://poser.pugx.org/rawphp/raw-session/v/stable.svg)](https://packagist.org/packages/rawphp/raw-session) [![Total Downloads](https://poser.pugx.org/rawphp/raw-session/downloads.svg)](https://packagist.org/packages/rawphp/raw-session) [![Latest Unstable Version](https://poser.pugx.org/rawphp/raw-session/v/unstable.svg)](https://packagist.org/packages/rawphp/raw-session) [![License](https://poser.pugx.org/rawphp/raw-session/license.svg)](https://packagist.org/packages/rawphp/raw-session)
 
 ## Package Features
-
 - Easily manage sessions with `start()`, `close()`, `destroy()` and `recreate()`
 - Manage data persistence across requests with `add()`, `get()`, `remove()`
 
@@ -83,6 +82,9 @@ This package is licensed under the [MIT](https://github.com/rawphp/RawSession/bl
 Please submit bug reports, suggestions and pull requests to the [GitHub issue tracker](https://github.com/rawphp/RawSession/issues).
 
 ## Changelog
+
+#### 17-09-2014
+- Updated to work with the latest rawphp/rawbase package.
 
 #### 14-09-2014
 - Fixed bug in Session.php.
