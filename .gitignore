@@ -8,3 +8,4 @@ project.xml
 project.properties
 /tests/build/
 !/tests/_output/empty
+/docs/

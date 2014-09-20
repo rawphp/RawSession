@@ -58,22 +58,6 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     public $session;
     
     /**
-     * Session Config
-     * @var array
-     */
-    protected static $config;
-    
-    /**
-     * Setup before test suite run.
-     */
-    public static function setUpBeforeClass()
-    {
-        parent::setUpBeforeClass();
-        
-        self::$config = include_once SUPPORT_DIR . 'config.php';
-    }
-    
-    /**
      * Cleanup after test suite run.
      */
     public static function tearDownAfterClass()
@@ -91,8 +75,10 @@ class SessionTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
+        global $config;
+        
         $this->session = new Session( );
-        $this->session->init( self::$config );
+        $this->session->init( $config );
     }
     
     /**

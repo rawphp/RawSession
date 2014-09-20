@@ -33,6 +33,8 @@
  * @link      http://rawphp.org/
  */
 
+use RawPHP\RawYaml\Yaml;
+
 defined( 'DS' )                 || define( 'DS', DIRECTORY_SEPARATOR );
 defined( 'SUPPORT_DIR' )        || define( 'SUPPORT_DIR', dirname( __FILE__ ) . DS . '_support' . DS );
 defined( 'OUTPUT_DIR' )         || define( 'OUTPUT_DIR', dirname( __FILE__ ) . DS . '_output' . DS );
@@ -41,5 +43,7 @@ defined( 'TEST_LOCK_FILE' )     || define( 'TEST_LOCK_FILE', OUTPUT_DIR . 'test.
 defined( 'SESSION_NAMESPACE' )  || define( 'SESSION_NAMESPACE', 'RawPHP\\RawSession\\' );
 
 require_once dirname( dirname( __FILE__ ) ) . DS . 'vendor' . DS . 'autoload.php';
+
+$config = ( new Yaml( ) )->load( SUPPORT_DIR . 'config.yml' );
 
 touch( TEST_LOCK_FILE );
