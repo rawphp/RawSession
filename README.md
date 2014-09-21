@@ -1,6 +1,6 @@
 # RawSession - A Simple Session Wrapper Class for PHP Applications
 
-[![Build Status](https://travis-ci.org/rawphp/RawSession.svg?branch=master)](https://travis-ci.org/rawphp/RawSession)
+[![Build Status](https://travis-ci.org/rawphp/RawSession.svg?branch=master)](https://travis-ci.org/rawphp/RawSession) [![Coverage Status](https://coveralls.io/repos/rawphp/RawSession/badge.png?branch=master)](https://coveralls.io/r/rawphp/RawSession?branch=master)
 
 [![Latest Stable Version](https://poser.pugx.org/rawphp/raw-session/v/stable.svg)](https://packagist.org/packages/rawphp/raw-session) [![Total Downloads](https://poser.pugx.org/rawphp/raw-session/downloads.svg)](https://packagist.org/packages/rawphp/raw-session) 
 [![Latest Unstable Version](https://poser.pugx.org/rawphp/raw-session/v/unstable.svg)](https://packagist.org/packages/rawphp/raw-session) [![License](https://poser.pugx.org/rawphp/raw-session/license.svg)](https://packagist.org/packages/rawphp/raw-session)
