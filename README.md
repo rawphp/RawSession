@@ -1,6 +1,9 @@
-# RawSession - A Simple Session Wrapper Class for PHP Applications [![Build Status](https://travis-ci.org/rawphp/RawSession.svg?branch=master)](https://travis-ci.org/rawphp/RawSession)
+# RawSession - A Simple Session Wrapper Class for PHP Applications
 
-[![Latest Stable Version](https://poser.pugx.org/rawphp/raw-session/v/stable.svg)](https://packagist.org/packages/rawphp/raw-session) [![Total Downloads](https://poser.pugx.org/rawphp/raw-session/downloads.svg)](https://packagist.org/packages/rawphp/raw-session) [![Latest Unstable Version](https://poser.pugx.org/rawphp/raw-session/v/unstable.svg)](https://packagist.org/packages/rawphp/raw-session) [![License](https://poser.pugx.org/rawphp/raw-session/license.svg)](https://packagist.org/packages/rawphp/raw-session)
+[![Build Status](https://travis-ci.org/rawphp/RawSession.svg?branch=master)](https://travis-ci.org/rawphp/RawSession)
+
+[![Latest Stable Version](https://poser.pugx.org/rawphp/raw-session/v/stable.svg)](https://packagist.org/packages/rawphp/raw-session) [![Total Downloads](https://poser.pugx.org/rawphp/raw-session/downloads.svg)](https://packagist.org/packages/rawphp/raw-session) 
+[![Latest Unstable Version](https://poser.pugx.org/rawphp/raw-session/v/unstable.svg)](https://packagist.org/packages/rawphp/raw-session) [![License](https://poser.pugx.org/rawphp/raw-session/license.svg)](https://packagist.org/packages/rawphp/raw-session)
 
 ## Package Features
 - Easily manage sessions with `start()`, `close()`, `destroy()` and `recreate()`
