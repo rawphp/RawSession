@@ -221,7 +221,7 @@ class Session extends Component implements ISession
     {
         $retval = NULL;
         
-        if ( version_compare( '5.4.0', phpversion( ), '<' ) )
+        if ( version_compare( '5.4.0', phpversion( ), '>' ) )
         {
             return self::STATUS_UNKNOWN;
         }
