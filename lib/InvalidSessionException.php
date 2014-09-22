@@ -35,7 +35,7 @@
 
 namespace RawPHP\RawSession;
 
-use RawPHP\RawBase\RawException;
+use RawPHP\RawBase\Exceptions\RawException;
 
 /**
  * Exception signifies an invalid session.
