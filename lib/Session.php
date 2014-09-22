@@ -211,6 +211,8 @@ class Session extends Component implements ISession
     /**
      * Returns the session status.
      * 
+     * If PHP version < 5.4 returns 'Unknown'.
+     * 
      * @fitler ON_GET_SESSION_STATUS_FILTER
      * 
      * @return string session status
@@ -218,6 +220,11 @@ class Session extends Component implements ISession
     public function getStatus( )
     {
         $retval = NULL;
+        
+        if ( version_compare( '5.4.0', phpversion( ), '<' ) )
+        {
+            return self::STATUS_UNKNOWN;
+        }
         
         switch ( session_status( ) )
         {
