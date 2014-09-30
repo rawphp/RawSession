@@ -48,3 +48,5 @@ $yaml = new Yaml( );
 $config = $yaml->load( SUPPORT_DIR . 'config.yml' );
 
 touch( TEST_LOCK_FILE );
+
+echo PHP_EOL . PHP_EOL . '************* BOOTSTRAP ********************' . PHP_EOL . PHP_EOL;
