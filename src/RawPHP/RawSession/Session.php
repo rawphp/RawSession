@@ -83,6 +83,8 @@ class Session implements ISession
      */
     public function init( $config = NULL )
     {
+        $path = '';
+
         if ( is_array( $config ) )
         {
             foreach ( $config as $key => $value )
@@ -105,8 +107,7 @@ class Session implements ISession
                         break;
 
                     case 'session_path':
-                        //$this->handler-> = $value;
-                        //session_save_path( $this->sessionPath );
+                        $path = $value;
                         break;
 
                     case 'session_id':
@@ -123,12 +124,12 @@ class Session implements ISession
 
         if ( !file_exists( TEST_LOCK_FILE ) )
         {
-            $this->create();
+            $this->handler->create( $path );
         }
 
         if ( isset( $config[ 'auto_start' ] ) && $config[ 'auto_start' ] )
         {
-            $this->handler->create();
+            $this->handler->create( $path );
         }
     }
 
