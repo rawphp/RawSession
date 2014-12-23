@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * PHP version 5.3
+ * PHP version 5.4
  *
  * @category  PHP
  * @package   RawPHP\RawSession\Contract
@@ -108,4 +108,18 @@ interface ISession
      * @param string $key key for the value
      */
     public function remove( $key );
+
+    /**
+     * Get the session handler.
+     *
+     * @return IHandler
+     */
+    public function getHandler();
+
+    /**
+     * Set the session handler.
+     *
+     * @param IHandler $handler
+     */
+    public function setHandler( IHandler $handler );
 }

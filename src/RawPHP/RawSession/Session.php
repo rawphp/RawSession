@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * PHP version 5.3
+ * PHP version 5.4
  *
  * @category  PHP
  * @package   RawPHP\RawSession
@@ -245,8 +245,28 @@ class Session implements ISession
         $this->handler->remove( $key );
     }
 
+    /**
+     * Get the session handler.
+     *
+     * @return IHandler
+     */
+    public function getHandler()
+    {
+        return $this->handler;
+    }
+
+    /**
+     * Set the session handler.
+     *
+     * @param IHandler $handler
+     */
+    public function setHandler( IHandler $handler )
+    {
+        $this->handler = $handler;
+    }
+
     const STATUS_UNKNOWN = 'Unknown';
-    const STATUS_DISABLED = 'Distabled';
+    const STATUS_DISABLED = 'Disabled';
     const STATUS_NONE = 'None';
     const STATUS_ACTIVE = 'Active';
 }
