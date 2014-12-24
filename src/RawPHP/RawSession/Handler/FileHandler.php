@@ -152,7 +152,7 @@ class FileHandler extends Handler
     {
         $json = file_get_contents( $this->sessionPath );
 
-        $this->items = json_decode( $json );
+        $this->items = json_decode( $json, TRUE );
     }
 
     /**
