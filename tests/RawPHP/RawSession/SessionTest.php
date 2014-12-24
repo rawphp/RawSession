@@ -33,10 +33,11 @@
  * @link      http://rawphp.org/
  */
 
-namespace RawPHP\RawSession;
+namespace RawPHP\RawSession\Tests;
 
 use PHPUnit_Framework_TestCase;
 use RawPHP\RawSession\Exception\InvalidSessionException;
+use RawPHP\RawSession\Session;
 
 /**
  * This session class tests.

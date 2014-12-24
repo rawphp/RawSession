@@ -44,8 +44,6 @@ class FileHandler extends Handler
 {
     /** @var  array */
     protected $items;
-    /** @var  string */
-    protected $path;
 
     /**
      * Create new session.
@@ -54,7 +52,7 @@ class FileHandler extends Handler
      */
     public function create( $path = '' )
     {
-        $this->path = $path;
+        $this->sessionPath = $path;
 
         if ( file_exists( $path ) )
         {
@@ -71,7 +69,7 @@ class FileHandler extends Handler
      */
     public function destroy()
     {
-        unlink( $this->path );
+        unlink( $this->sessionPath );
 
         $this->items = [ ];
     }

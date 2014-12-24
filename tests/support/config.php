@@ -6,6 +6,6 @@ return
         'handler'      => 'php',
         'auto_start'   => FALSE,
         'strict'       => TRUE,
-        'session_path' => '',
+        'session_path' => OUTPUT_DIR . 'session.json',
         'session_id'   => '',
     ];
