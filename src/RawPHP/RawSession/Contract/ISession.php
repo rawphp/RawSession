@@ -122,4 +122,11 @@ interface ISession
      * @param IHandler $handler
      */
     public function setHandler( IHandler $handler );
+
+    /**
+     * Remove a handler from the session.
+     *
+     * @param IHandler $handler
+     */
+    public function removeHandler( IHandler $handler = NULL );
 }

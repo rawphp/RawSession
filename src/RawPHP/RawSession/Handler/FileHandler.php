@@ -69,7 +69,10 @@ class FileHandler extends Handler
      */
     public function destroy()
     {
-        unlink( $this->sessionPath );
+        if ( file_exists( $this->sessionPath ) )
+        {
+            unlink( $this->sessionPath );
+        }
 
         $this->items = [ ];
     }
@@ -150,5 +153,25 @@ class FileHandler extends Handler
         $json = file_get_contents( $this->sessionPath );
 
         $this->items = json_decode( $json );
+    }
+
+    /**
+     * Get session items array.
+     *
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * Set session items array.
+     *
+     * @param array $items
+     */
+    public function setItems( array $items )
+    {
+        $this->items = $items;
     }
 }

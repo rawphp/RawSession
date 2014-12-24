@@ -102,6 +102,8 @@ class SessionTest extends PHPUnit_Framework_TestCase
     public function testSessionInstantiatedCorrectly()
     {
         $this->assertNotNull( $this->session );
+        $this->assertEquals( OUTPUT_DIR . 'session.json', $this->session->getHandler()->getSessionPath() );
+        $this->assertNotNull( $this->session->getHandler()->getItems() );
     }
 
     /**
@@ -111,6 +113,7 @@ class SessionTest extends PHPUnit_Framework_TestCase
      */
     public function testDestroyThrowExceptionWhenNoSessionExists()
     {
+        $this->session->removeHandler();
         $this->session->destroy();
     }
 }

@@ -32,7 +32,6 @@
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-
 namespace RawPHP\RawSession;
 
 use RawPHP\RawSession\Contract\IHandler;
@@ -111,8 +110,7 @@ class Session implements ISession
                         break;
 
                     case 'session_id':
-                        //$this->sessionID = $value;
-                        //session_id( $this->sessionID );
+                        $this->handler->setSessionID( $value );
                         break;
 
                     default:
@@ -122,14 +120,13 @@ class Session implements ISession
             }
         }
 
-        if ( !file_exists( TEST_LOCK_FILE ) )
+        if ( NULL !== $this->handler )
         {
             $this->handler->create( $path );
         }
-
-        if ( isset( $config[ 'auto_start' ] ) && $config[ 'auto_start' ] )
+        else
         {
-            $this->handler->create( $path );
+            throw new InvalidSessionException( 'Session has no valid handler.' );
         }
     }
 
@@ -153,6 +150,11 @@ class Session implements ISession
      */
     public function destroy()
     {
+        if ( NULL == $this->handler )
+        {
+            throw new InvalidSessionException( 'Unable to destroy session. Handler is NULL.' );
+        }
+
         $this->handler->destroy();
     }
 
@@ -270,4 +272,21 @@ class Session implements ISession
     const STATUS_DISABLED = 'Disabled';
     const STATUS_NONE = 'None';
     const STATUS_ACTIVE = 'Active';
+
+    /**
+     * Remove a handler from the session.
+     *
+     * @param IHandler $handler
+     */
+    public function removeHandler( IHandler $handler = NULL )
+    {
+        if ( NULL !== $handler && $this->handler == $handler )
+        {
+            $this->handler = NULL;
+        }
+        else
+        {
+            $this->handler = NULL;
+        }
+    }
 }
