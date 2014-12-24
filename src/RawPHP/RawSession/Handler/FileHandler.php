@@ -139,7 +139,7 @@ class FileHandler extends Handler
     {
         $json = json_encode( $this->items );
 
-        file_put_contents( $this->path, $json );
+        file_put_contents( $this->sessionPath, $json );
     }
 
     /**
