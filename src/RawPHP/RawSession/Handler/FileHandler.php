@@ -147,7 +147,7 @@ class FileHandler extends Handler
      */
     protected function getFileContents()
     {
-        $json = file_get_contents( $this->path );
+        $json = file_get_contents( $this->sessionPath );
 
         $this->items = json_decode( $json );
     }
